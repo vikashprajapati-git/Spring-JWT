@@ -19,14 +19,14 @@ public class EngineerCredService {
     private BCryptPasswordEncoder  encoder = new BCryptPasswordEncoder(12);
 
 
-    public ResponseEntity<String> saveEngineerCred(EngineerCred engineerCred) {
+    public ResponseEntity<String> registerEngineerCred(EngineerCred engineerCred) {
         engineerCred.setEPassword(encoder.encode(engineerCred.getEPassword()));
         engineerCredRepository.save(engineerCred);
         return new ResponseEntity<>("Success",HttpStatus.CREATED);
     }
 
 
-    public ResponseEntity<List<EngineerCred>> findAllEngineerCred() {
+    public ResponseEntity<List<EngineerCred>> getAllEngineerCred() {
         return new ResponseEntity<>(engineerCredRepository.findAll(), HttpStatus.OK);
     }
 }
