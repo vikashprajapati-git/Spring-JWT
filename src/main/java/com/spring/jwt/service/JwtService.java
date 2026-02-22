@@ -2,6 +2,7 @@ package com.spring.jwt.service;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Service;
 
@@ -36,7 +37,7 @@ public class JwtService {
     }
 
     private Key getKey(){
-        byte[] keyBytes = Base64.getDecoder().decode(secretKey);
+        byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         return Keys.hmacShaKeyFor(keyBytes);
     }
 
